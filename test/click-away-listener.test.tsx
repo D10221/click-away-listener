@@ -5,14 +5,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { findDOMNode } from "react-dom";
-import { ClickAwayListener } from "../";
+import ClickAwayListener from "../src";
 
 describe("<ClickAwayListener />", () => {
   /** */
   it("should render the children", () => {
     const children = <span id="hello">Hello</span>;
-    let el: Element;
+    let el: any;
     const body = document.createElement("div");
+
     ReactDOM.render(
       <ClickAwayListener
         ref={x => el = findDOMNode(x)}
@@ -26,8 +27,8 @@ describe("<ClickAwayListener />", () => {
     /** */
     it("should be call when clicking away", () => {
       let clicks = 0;
-      let e;
-      const handleClickAway = event => {
+      let e: any;
+      const handleClickAway = (_event: any) => {
         e = event;
         clicks++;
       };
@@ -48,13 +49,11 @@ describe("<ClickAwayListener />", () => {
     /** */
     it("should not be call when clicking inside", () => {
       let clicks = 0;
-      let e;
-      const handleClickAway = event => {
-        e = event;
+      const handleClickAway = (_event: any) => {
         clicks++;
       };
       const body = document.createElement("div");
-      let el;
+      let el: any;
       ReactDOM.render(
         <ClickAwayListener
           onClickAway={handleClickAway}
@@ -76,9 +75,7 @@ describe("<ClickAwayListener />", () => {
     /** */
     it("should not be call when defaultPrevented", () => {
       let clicks = 0;
-      let e;
-      const handleClickAway = event => {
-        e = event;
+      const handleClickAway = (_event: any) => {
         clicks++;
       };
       const body = document.createElement("div");
