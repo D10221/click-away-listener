@@ -2,25 +2,23 @@
  * source: https://github.com/mui-org/material-ui/blob/v1-beta/src/utils/ClickAwayListener.spec.js
  * reduced and tweeked 
  */
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { findDOMNode } from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 import ClickAwayListener from "../src";
 
 describe("<ClickAwayListener />", () => {
   /** */
   it("should render the children", () => {
-    const children = <span id="hello">Hello</span>;
-    let el: any;
+    let ref = React.createRef<any>();
     const body = document.createElement("div");
-
     ReactDOM.render(
       <ClickAwayListener
-        ref={x => el = findDOMNode(x)}
-        onClickAway={() => { }}>{children}</ClickAwayListener>,
+        onClickAway={() => { }}>
+        <span ref={ref} id="hello">Hello</span></ClickAwayListener>,
       body,
     );
-    expect(el.id).toBe("hello");
+
+    expect((ReactDOM.findDOMNode(ref.current) as Element).id).toBe("hello");
   });
   /** */
   describe("prop: onClickAway", () => {
@@ -53,23 +51,21 @@ describe("<ClickAwayListener />", () => {
         clicks++;
       };
       const body = document.createElement("div");
-      let el: any;
+      let el = React.createRef<any>();
       ReactDOM.render(
         <ClickAwayListener
           onClickAway={handleClickAway}
         >
           <span
-            ref={x => {
-              el = x;
-            }}
+            ref={el}
             id="hello">Hello</span>
         </ClickAwayListener>,
         body,
       );
       const event = document.createEvent("MouseEvents");
       event.initEvent("mouseup", true, true);
-      expect(el.id).toBe("hello")
-      el.dispatchEvent(event);
+      expect(el.current.id).toBe("hello")
+      el.current.dispatchEvent(event);
       expect(clicks).toBe(0);
     });
     /** */
@@ -81,7 +77,7 @@ describe("<ClickAwayListener />", () => {
       const body = document.createElement("div");
       ReactDOM.render(
         <ClickAwayListener onClickAway={handleClickAway}>
-          <ClickAwayListener onClickAway={event => event.preventDefault()}>
+          <ClickAwayListener onClickAway={(event: any) => event.preventDefault()}>
             <span>Hello</span>
           </ClickAwayListener>
         </ClickAwayListener>,
