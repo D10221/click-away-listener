@@ -1,18 +1,19 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { findDOMNode } from "react-dom";
-
+/** */
 type Optional<T> = T | null | undefined | false;
-
 /** */
 interface Props {
   /**
-   * 
-   * @param e {PointerEvent}  Owner document pointerup event 
+   *
+   * @param e {PointerEvent}  Owner document pointerup event
    */
-  onClickAway(e: PointerEvent): any; // void|Promise<any>
+  onClickAway(e: Event): any; // void|Promise<any>
+  eventType?: "pointerup" | "mouseup" | undefined;
 }
 
-const ownerDocument = (node?: Optional<Element | Text>) => node && node.ownerDocument || document
+const ownerDocument = (node?: Optional<Element | Text>) =>
+  (node && node.ownerDocument) || document;
 
 const isDescendant = (el: Optional<Element | Text>, target: Node): boolean => {
   if (target !== null && target.parentNode) {
@@ -23,7 +24,12 @@ const isDescendant = (el: Optional<Element | Text>, target: Node): boolean => {
 /**
  * Listen for pointerup events outside of the component children.
  */
-const ClickAwayListener: FunctionComponent<Props> = ({ onClickAway, children }) => {
+const ClickAwayListener: FunctionComponent<Props> = ({
+  onClickAway,
+  children,
+  /** jsdom can't see pointerup */
+  eventType = "pointerup",
+}) => {
   const [ref, _setRef] = useState<Optional<Element>>(undefined);
   /**
    * @description addEventListener to owner document
@@ -33,9 +39,9 @@ const ClickAwayListener: FunctionComponent<Props> = ({ onClickAway, children }) 
     const owner = ownerDocument(ref);
     /**
      * Handle Event
-     * @param event 
+     * @param event
      */
-    const handle = (event: PointerEvent) => {
+    const handle = (event: Event) => {
       if (event.defaultPrevented) return;
       const el = findDOMNode(ref);
       const doc = ownerDocument(el);
@@ -47,30 +53,34 @@ const ClickAwayListener: FunctionComponent<Props> = ({ onClickAway, children }) 
       ) {
         onClickAway(event);
       }
-    }
+    };
 
-    owner.addEventListener("pointerup", (handle));
+    owner.addEventListener(eventType, handle);
     /** Unsubscribe */
-    return () => owner.removeEventListener("pointerup", handle);
-  }
-  /**
-   * set local ref and bubble up ....
-   * @param value 
-   */
-  function setRef(value: Optional<Element>): void {
-    if (xref) xref(value);
-    _setRef(value);
+    return () => owner.removeEventListener(eventType, handle);
   }
   /** subscribe/unsubscibe on e/render */
-  useEffect(() => (ref) && subscribe(ref) || undefined)
+  useEffect(() => (ref && subscribe(ref)) || undefined);
 
   const onlyChildren = React.Children.only(children);
   if (!React.isValidElement(onlyChildren)) {
     console.warn("Children: !isValidElement: ", onlyChildren);
     return null;
   }
-  const { ref: xref, ...props } = onlyChildren.props as any;
-  return React.cloneElement(onlyChildren, { ...props, ref: setRef });
+  return React.cloneElement(onlyChildren, {
+    ...onlyChildren.props,
+    /**
+     * set local ref and bubble up ....
+     * @param value
+     */
+    ref: function setRef(value: Optional<Element>): void {
+      _setRef(value);
+      if (hasRef(onlyChildren)) onlyChildren.ref(value);
+    },
+  });
+};
+function hasRef(x: any): x is { ref: Function } {
+  return x && typeof (x as any).ref === "function";
 }
 
 export default ClickAwayListener;
