@@ -1,13 +1,13 @@
 import ClickAway from "@d10221/click-away-listener";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import logo from "./logo.svg";
 import * as serviceWorker from "./serviceWorker";
 /** */
 const repoUrl = "https://github.com/D10221/click-away-listener";
 /** */
 const issuesUrl = "https://github.com/D10221/click-away-listener/issues";
+const logo = "./logo.svg";
+
 /** */
 function classNames(...names) {
   return names.filter(Boolean).join(" ");
