@@ -6,6 +6,18 @@ import logo from "./logo.svg";
 import * as serviceWorker from "./serviceWorker";
 
 const repoUrl = "https://github.com/D10221/click-away-listener";
+const issuesUrl = "https://github.com/D10221/click-away-listener/issues";
+
+const Icon = ({ label, value }) => (
+  <span
+    className="icon"
+    role="img"
+    aria-label={label || ""}
+    aria-hidden={!Boolean(label)}
+  >
+    {value}
+  </span>
+);
 
 function App() {
   const [{ away }, setState] = useState({ away: {} });
@@ -41,7 +53,7 @@ function App() {
     <>
       <header>
         <nav>
-          <a href={repoUrl}>Click Away Listener</a>
+          <a href={repoUrl}><h1 className="header-title">Click Away Listener</h1></a>
         </nav>
       </header>
       <main>
@@ -73,10 +85,10 @@ function App() {
         </ClickAway>
         <p>Click Around</p>
       </main>
-      <footer>
-        <div id="spacer" style={{ flex: "1 0" }} />
-        <a href={repoUrl}>Issues</a>
-        <a href={repoUrl}>Source</a>
+      <footer>        
+        <div className="footer-item">
+          <Icon label="Feedback" value={"💬"} /><a href={issuesUrl}>Feedback</a>
+        </div>
       </footer>
     </>
   );
