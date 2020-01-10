@@ -1,10 +1,17 @@
 {
-  "name": "@d10221/click-away-listener",
-  "version": "1.0.0-beta.1",
-  "description": "React click away listener, Extracted from Material-ui/utils/ClickAwayListener",
+  "name": "@d10221/react-click-away-listener",
+  "version": "1.0.0",
+  "description": "React click away listener component",
   "main": "lib/index.js",
-  "module": "lib/index.js",
   "types": "lib/index.d.ts",
+  "author": "d10221",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/D10221/click-away-listener.git"
+  },
+  "homepage": "https://d10221.github.io/click-away-listener/",
+  "bugs": "https://github.com/D10221/click-away-listener/issues",
   "scripts": {
     "test": "jest",
     "build": "rimraf ./lib && tsc -p .",
@@ -16,8 +23,6 @@
     "away",
     "listener"
   ],
-  "author": "d10221",
-  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "24.0.25",
@@ -38,8 +43,7 @@
   ],
   "release-it": {
     "git": {
-      "tagName": "v${version}",
-      "commitMessage": "Release"
+      "tagName": "v${version}"
     },
     "github": {
       "release": true

@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+img {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.header-title {
+  border-bottom: 1px dotted whitesmoke;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  height: calc(100vh - (10px + .5vmin + 13.5rem ));
+}
+
+footer {
+  font-size: calc(10px + 1vmin);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5rem;  
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+.footer-item {
+  margin-left: 1rem;  
+}
+a {
+  color: #61dafb;
+  text-decoration: none;
+  padding-left: 0.5rem;    
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border-style: dashed;
+  padding: 1rem;
+  margin: 1rem;
+}
+.icon {  
+  padding-right: 0.5vmin;
+  font-size: 0.8em;  
+}
+.spacer {
+  flex: 1 0;
+}
+.away {
+  color: red;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
