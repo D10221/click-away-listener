@@ -4,10 +4,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import logo from "./logo.svg";
 import * as serviceWorker from "./serviceWorker";
-
+/** */
 const repoUrl = "https://github.com/D10221/click-away-listener";
+/** */
 const issuesUrl = "https://github.com/D10221/click-away-listener/issues";
-
+/** */
+function classNames(...names) {
+  return names.filter(Boolean).join(" ");
+}
+/** */
 const Icon = ({ label, value }) => (
   <span
     className="icon"
@@ -18,36 +23,23 @@ const Icon = ({ label, value }) => (
     {value}
   </span>
 );
-
+/** */
 function App() {
-  const [{ away }, setState] = useState({ away: {} });
+  const [away, setAway] = useState({});
+  const back = {};
+  /** */
   function onClickAway(id) {
     return _ => {
-      setState({
-        away: {
-          ...away,
-          [id]: true,
-        },
-      });
-      setTimeout(
-        () =>
-          setState({
-            away: {
-              ...away,
-              [id]: false,
-            },
-          }),
-        500,
-      );
+      // ...buffering 
+      Object.assign(away, { [id]: true });
+      Object.assign(back, { [id]: false });
+      function blink() {
+        setAway({ ...away });
+        setTimeout(() => setAway(back), 500)
+      }
+      setTimeout(blink, 10);
+
     };
-  }
-  function onClick() {
-    setState({
-      away,
-    });
-  }
-  function getColor(key) {
-    return away && away[key] ? "red" : "unset";
   }
   return (
     <>
@@ -60,11 +52,7 @@ function App() {
         <ClickAway onClickAway={onClickAway("one")}>
           <div
             id="one"
-            onClick={onClick}
-            className="container"
-            style={{
-              color: getColor("one"),
-            }}
+            className={classNames("container", away.one && "away")}
           >
             <img src={logo} className="logo" alt="logo" width="150px" />
             <span>One</span>
@@ -73,11 +61,7 @@ function App() {
         <ClickAway onClickAway={onClickAway("two")}>
           <div
             id="two"
-            onClick={onClick}
-            className="container"
-            style={{
-              color: getColor("two"),
-            }}
+            className={classNames("container", away.two && "away")}
           >
             <img src={logo} className="logo" alt="logo" width="150px" />
             <span>Two</span>
@@ -85,7 +69,7 @@ function App() {
         </ClickAway>
         <p>Click Around</p>
       </main>
-      <footer>        
+      <footer>
         <div className="footer-item">
           <Icon label="Feedback" value={"💬"} /><a href={issuesUrl}>Feedback</a>
         </div>
@@ -98,7 +82,4 @@ export default App;
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
