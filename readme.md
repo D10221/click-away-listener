@@ -30,6 +30,6 @@ Notes:
 
 ### Demo
 
-[Source](<("./packages/demo")>)
+[Source]("./packages/demo")
 
 [App]("https://d10221.github.io/click-away-listener/")
