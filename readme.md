@@ -25,6 +25,11 @@ Notes:
 - Probably won't work on IE
 - React/ReactDom are peer dependencies (Preact?)
 - Wip (forever)
+
 ---
 
-### [Demo]("./packages/demo")
+### Demo
+
+[Source](<("./packages/demo")>)
+
+[App]("https://d10221.github.io/click-away-listener/")

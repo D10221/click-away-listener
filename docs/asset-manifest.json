@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.afb0bc74.chunk.css",
-    "main.js": "/static/js/main.dc29671c.chunk.js",
-    "main.js.map": "/static/js/main.dc29671c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.de88468f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.de88468f.js.map",
-    "static/js/2.949a1df6.chunk.js": "/static/js/2.949a1df6.chunk.js",
-    "static/js/2.949a1df6.chunk.js.map": "/static/js/2.949a1df6.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.595075ff7b34a47ed620ce09f8a1b47d.js": "/precache-manifest.595075ff7b34a47ed620ce09f8a1b47d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.afb0bc74.chunk.css.map": "/static/css/main.afb0bc74.chunk.css.map",
-    "static/js/2.949a1df6.chunk.js.LICENSE": "/static/js/2.949a1df6.chunk.js.LICENSE",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/click-away-listener/static/css/main.afb0bc74.chunk.css",
+    "main.js": "/click-away-listener/static/js/main.d660d691.chunk.js",
+    "main.js.map": "/click-away-listener/static/js/main.d660d691.chunk.js.map",
+    "runtime-main.js": "/click-away-listener/static/js/runtime-main.880db0bc.js",
+    "runtime-main.js.map": "/click-away-listener/static/js/runtime-main.880db0bc.js.map",
+    "static/js/2.949a1df6.chunk.js": "/click-away-listener/static/js/2.949a1df6.chunk.js",
+    "static/js/2.949a1df6.chunk.js.map": "/click-away-listener/static/js/2.949a1df6.chunk.js.map",
+    "index.html": "/click-away-listener/index.html",
+    "precache-manifest.66d3a613525cb1da292d3b964bca1053.js": "/click-away-listener/precache-manifest.66d3a613525cb1da292d3b964bca1053.js",
+    "service-worker.js": "/click-away-listener/service-worker.js",
+    "static/css/main.afb0bc74.chunk.css.map": "/click-away-listener/static/css/main.afb0bc74.chunk.css.map",
+    "static/js/2.949a1df6.chunk.js.LICENSE": "/click-away-listener/static/js/2.949a1df6.chunk.js.LICENSE",
+    "static/media/logo.svg": "/click-away-listener/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.de88468f.js",
+    "static/js/runtime-main.880db0bc.js",
     "static/js/2.949a1df6.chunk.js",
     "static/css/main.afb0bc74.chunk.css",
-    "static/js/main.dc29671c.chunk.js"
+    "static/js/main.d660d691.chunk.js"
   ]
 }
