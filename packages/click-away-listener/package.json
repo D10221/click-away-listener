@@ -6,10 +6,7 @@
   "types": "lib/index.d.ts",
   "author": "d10221",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/D10221/click-away-listener.git"
-  },
+  "repository": "https://github.com/D10221/click-away-listener.git",
   "homepage": "https://d10221.github.io/click-away-listener/",
   "bugs": "https://github.com/D10221/click-away-listener/issues",
   "scripts": {
