@@ -1,6 +1,6 @@
 {
   "name": "@d10221/click-away-listener",
-  "version": "0.1.0-2",
+  "version": "1.0.0-beta1",
   "description": "React click away listener, Extracted from Material-ui/utils/ClickAwayListener",
   "main": "lib/index.js",
   "module": "lib/index.js",  
