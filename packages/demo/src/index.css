@@ -45,7 +45,7 @@ main {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  height: calc(100vh - (10px + .5vmin + 7rem ));
+  height: calc(100vh - (10px + .5vmin + 8rem ));
 }
 
 footer {
